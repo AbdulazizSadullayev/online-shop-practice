@@ -7,6 +7,8 @@ import Navbar from './navbar'
 import ProductList from './productlist'
 import EquipmentCard from './productlist2'
 
+
+
 const App = () => {
   return (
     <div className="min-h-screen bg-white font-sans antialiased">
