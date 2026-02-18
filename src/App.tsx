@@ -1,8 +1,11 @@
 
+import { equipmentData } from './constants'
+import DeliveryPromo from './DeliveryPromo'
 import Features from './features'
 import Hero from './hero'
 import Navbar from './navbar'
 import ProductList from './productlist'
+import EquipmentCard from './productlist2'
 
 const App = () => {
   return (
@@ -14,15 +17,27 @@ const App = () => {
         <div className="min-h-screen bg-[#F4F7FE] p-10">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-2xl font-black text-[#1B254B] mb-8">Ijara Katalogi</h1>
-        
-        {/* Yangi komponentni chaqiramiz */}
         <ProductList />
-        
       </div>
     </div>
-        {/* <ProductCard/> */}
       </main>
+      <DeliveryPromo />
+      <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold mb-10 text-gray-800 text-center md:text-left">
+          Спортивные тренажеры
+        </h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          {equipmentData.map((item) => (
+            <EquipmentCard key={item.id} item={item} />
+          ))}
+        </div>
+      </div>
     </div>
+
+    </div>
+    
   )
 }
 

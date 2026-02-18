@@ -1,5 +1,4 @@
 
-import ProductCard from './ProductCard';
 import { Settings2, Anchor, Zap } from 'lucide-react';
 import img1 from './images/img1.jpg'
 import img2 from './images/img2.png'
@@ -7,6 +6,7 @@ import img3 from './images/img3.jpg'
 import img4 from './images/img4.png'
 import img5 from './images/img5.jpg'
 import img6 from './images/img6.jpg'
+import ProductCard from './productCard';
 
 const products = [
   {
