@@ -4,7 +4,7 @@ import type { Equipment } from './constants';
 
 const EquipmentCard: React.FC<{ item: Equipment }> = ({ item }) => {
   return (
-    <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col items-center relative max-w-[350px]">
+    <div className="bg-white rounded-4xl p-6 shadow-sm border border-gray-150 flex flex-col items-center relative max-w-[350px]">
       {/* Heart Icon */}
       <button className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

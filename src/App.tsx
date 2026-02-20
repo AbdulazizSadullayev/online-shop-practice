@@ -2,6 +2,7 @@
 import { equipmentData } from './constants'
 import DeliveryPromo from './DeliveryPromo'
 import Features from './features'
+import FeaturesBanner from './featuresbanner'
 import Hero from './hero'
 import Navbar from './navbar'
 import ProductList from './productlist'
@@ -35,6 +36,7 @@ const App = () => {
             <EquipmentCard key={item.id} item={item} />
           ))}
         </div>
+        <FeaturesBanner/>
       </div>
     </div>
 
