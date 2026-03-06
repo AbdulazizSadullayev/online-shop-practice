@@ -1,12 +1,17 @@
 
+import AddressSection from './AddressSection'
 import { equipmentData } from './constants'
 import DeliveryPromo from './DeliveryPromo'
 import Features from './features'
 import FeaturesBanner from './featuresbanner'
+import { gadgets } from './gadgets'
+import GadgetsCard from './gadgetsCard'
 import Hero from './hero'
 import Navbar from './navbar'
+import PartnersSection from './partnersSection'
 import ProductList from './productlist'
 import EquipmentCard from './productlist2'
+import RentInstruction from './rentInstruction'
 
 
 
@@ -31,14 +36,32 @@ const App = () => {
           Спортивные тренажеры
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 gap-8 justify-items-center">
           {equipmentData.map((item) => (
             <EquipmentCard key={item.id} item={item} />
           ))}
         </div>
         <FeaturesBanner/>
+        
       </div>
+      <div className=" min-h-screen p-10 ">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-2xl font-bold mb-10 text-gray-800">Гаджеты и другие</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-items-center">
+          {gadgets.map((item) => (
+            <GadgetsCard key={item.id} item={item} />
+          ))}
+        </div>
+        <FeaturesBanner/>
+      </div>
+      
     </div>
+    
+    </div>
+    <RentInstruction/>
+    <AddressSection/>
+    <PartnersSection/>
 
     </div>
     
