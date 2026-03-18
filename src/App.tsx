@@ -4,6 +4,7 @@ import { equipmentData } from './constants'
 import DeliveryPromo from './DeliveryPromo'
 import Features from './features'
 import FeaturesBanner from './featuresbanner'
+import Footer from './footer'
 import { gadgets } from './gadgets'
 import GadgetsCard from './gadgetsCard'
 import Hero from './hero'
@@ -63,6 +64,7 @@ const App = () => {
     <AddressSection/>
     <PartnersSection/>
 
+    <Footer/>
     </div>
     
   )
