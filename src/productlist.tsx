@@ -84,7 +84,7 @@ const products = [
 ];
 
 const ProductList = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 print-grid">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {products.map((p, index) => (
       <ProductCard key={index} {...p} />
     ))}
