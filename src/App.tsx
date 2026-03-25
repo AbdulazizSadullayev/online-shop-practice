@@ -19,52 +19,64 @@ import RentInstruction from './rentInstruction'
 const App = () => {
   return (
     <div className="min-h-screen bg-white font-sans antialiased">
-      <Navbar />
+      <div className="no-print">
+        <Navbar />
+      </div>
       <main>
-        <Hero />
-        <Features />
+        <div className="no-print">
+          <Hero />
+          <Features />
+        </div>
         <div className="min-h-screen bg-[#F4F7FE] p-10">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-2xl font-black text-[#1B254B] mb-8">Ijara Katalogi</h1>
+        <h1 className="text-2xl font-black text-[#1B254B] mb-8 no-print">Ijara Katalogi</h1>
         <ProductList />
       </div>
     </div>
       </main>
-      <DeliveryPromo />
+      <div className="no-print">
+        <DeliveryPromo />
+      </div>
       <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-10 text-gray-800 text-center md:text-left">
+        <h1 className="text-3xl font-bold mb-10 text-gray-800 text-center md:text-left no-print">
           Спортивные тренажеры
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 gap-8 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 gap-8 justify-items-center print-grid">
           {equipmentData.map((item) => (
             <EquipmentCard key={item.id} item={item} />
           ))}
         </div>
-        <FeaturesBanner/>
+        <div className="no-print">
+          <FeaturesBanner />
+        </div>
         
       </div>
       <div className=" min-h-screen p-10 ">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold mb-10 text-gray-800">Гаджеты и другие</h2>
+        <h2 className="text-2xl font-bold mb-10 text-gray-800 no-print">Гаджеты и другие</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-items-center print-grid">
           {gadgets.map((item) => (
             <GadgetsCard key={item.id} item={item} />
           ))}
         </div>
-        <FeaturesBanner/>
+        <div className="no-print">
+          <FeaturesBanner />
+        </div>
       </div>
       
     </div>
     
     </div>
-    <RentInstruction/>
-    <AddressSection/>
-    <PartnersSection/>
+    <div className="no-print">
+      <RentInstruction />
+      <AddressSection />
+      <PartnersSection />
+      <Footer />
+    </div>
 
-    <Footer/>
     </div>
     
   )

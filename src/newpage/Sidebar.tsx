@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { LayoutDashboard, Users, School, Package, Utensils, Settings, LogOut, BarChart3, ShieldCheck, ClipboardCheck, Wallet, RefreshCw } from 'lucide-react';
+import { LayoutDashboard, Users, School, Package, Settings, LogOut, BarChart3, RefreshCw } from 'lucide-react';
 
 const SidebarItem = ({ icon: Icon, label, to }: { icon: any, label: string, to: string }) => (
   <Link to={to} className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-lg transition-all">
