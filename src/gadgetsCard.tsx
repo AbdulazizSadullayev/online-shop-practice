@@ -2,9 +2,11 @@
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useShopStore } from './shopStore'
 
 const GadgetsCard: React.FC<{ item: any }> = ({ item }) => {
   const navigate = useNavigate()
+  const { addLike, addToCart } = useShopStore()
 
   const goToDetail = () => {
     navigate('/product', {
@@ -34,7 +36,16 @@ const GadgetsCard: React.FC<{ item: any }> = ({ item }) => {
       <button
         type="button"
         className="absolute top-5 right-5 text-gray-400 hover:text-red-500 transition-colors"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation()
+          addLike({
+            title: item.title,
+            image: item.image,
+            priceWeek: item.price,
+            priceMonth: item.price2,
+            oldPriceMonth: item.oldPrice,
+          })
+        }}
         aria-label="favorite"
       >
         <svg fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
@@ -86,6 +97,20 @@ const GadgetsCard: React.FC<{ item: any }> = ({ item }) => {
       <button
         type="button"
         className="w-full bg-[#3D3D3D] text-white py-4 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-black transition-all"
+        onClick={(e) => {
+          e.stopPropagation()
+          addToCart(
+            {
+              title: item.title,
+              image: item.image,
+              priceWeek: item.price,
+              priceMonth: item.price2,
+              oldPriceMonth: item.oldPrice,
+            },
+            1,
+          )
+          navigate('/cart')
+        }}
       >
         Арендовать
       </button>

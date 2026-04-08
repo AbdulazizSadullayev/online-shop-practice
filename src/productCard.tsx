@@ -1,6 +1,7 @@
 // Kartochka uchun interfeys
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useShopStore } from './shopStore'
 
 interface ProductProps {
   name: string;
@@ -13,6 +14,7 @@ interface ProductProps {
 
 const ProductCard: React.FC<ProductProps> = ({ name, priceWeek, priceMonth, oldPriceMonth, image, features }) => {
   const navigate = useNavigate()
+  const { addLike, addToCart } = useShopStore()
 
   const goToDetail = () => {
     navigate('/product', {
@@ -43,7 +45,16 @@ const ProductCard: React.FC<ProductProps> = ({ name, priceWeek, priceMonth, oldP
         <button
           type="button"
           className="text-gray-300"
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation()
+            addLike({
+              title: name,
+              image,
+              priceWeek,
+              priceMonth,
+              oldPriceMonth,
+            })
+          }}
           aria-label="favorite"
         >
           ❤
@@ -83,6 +94,20 @@ const ProductCard: React.FC<ProductProps> = ({ name, priceWeek, priceMonth, oldP
       <button
         type="button"
         className="w-full bg-[#222] text-white font-bold py-3 rounded-xl uppercase text-[10px] tracking-widest mt-auto"
+        onClick={(e) => {
+          e.stopPropagation()
+          addToCart(
+            {
+              title: name,
+              image,
+              priceWeek,
+              priceMonth,
+              oldPriceMonth,
+            },
+            1,
+          )
+          navigate('/cart')
+        }}
       >
         Arendovat
       </button>

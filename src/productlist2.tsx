@@ -1,10 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { Equipment } from './constants';
+import { useShopStore } from './shopStore'
  // Interfeysni import qilamiz
 
 const EquipmentCard: React.FC<{ item: Equipment }> = ({ item }) => {
   const navigate = useNavigate()
+  const { addLike, addToCart } = useShopStore()
 
   const goToDetail = () => {
     navigate('/product', {
@@ -34,7 +36,16 @@ const EquipmentCard: React.FC<{ item: Equipment }> = ({ item }) => {
       <button
         type="button"
         className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation()
+          addLike({
+            title: `${item.title} - ${item.version}`,
+            image: item.image,
+            priceWeek: item.price1Month,
+            priceMonth: item.price2Months,
+            oldPriceMonth: item.oldPrice2Months,
+          })
+        }}
         aria-label="favorite"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -87,6 +98,20 @@ const EquipmentCard: React.FC<{ item: Equipment }> = ({ item }) => {
       <button
         type="button"
         className="w-full bg-[#3d3d3d] text-white py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-black transition-colors"
+        onClick={(e) => {
+          e.stopPropagation()
+          addToCart(
+            {
+              title: `${item.title} - ${item.version}`,
+              image: item.image,
+              priceWeek: item.price1Month,
+              priceMonth: item.price2Months,
+              oldPriceMonth: item.oldPrice2Months,
+            },
+            1,
+          )
+          navigate('/cart')
+        }}
       >
         Арендовать
       </button>

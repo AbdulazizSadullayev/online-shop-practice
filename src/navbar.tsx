@@ -1,6 +1,12 @@
-import React from 'react';
+import React from 'react'
+import { Heart, ShoppingBag, User } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { useShopStore } from './shopStore'
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate()
+  const { likes, cart } = useShopStore()
+
   return (
     <header className="w-full bg-white">
       {/* Top Bar */}
@@ -26,13 +32,37 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex gap-4 items-center">
-          <button className="p-2 hover:bg-gray-100 rounded-full">🛍️</button>
-          <button className="p-2 hover:bg-gray-100 rounded-full">🤍</button>
-          <button className="p-2 hover:bg-gray-100 rounded-full">👤</button>
+          <button
+            className="p-2 hover:bg-gray-100 rounded-full relative"
+            onClick={() => navigate('/cart')}
+            aria-label="open cart"
+          >
+            <ShoppingBag size={20} />
+            {cart.length > 0 ? (
+              <span className="absolute -top-1 -right-1 text-[10px] h-4 min-w-4 px-1 rounded-full bg-black text-white flex items-center justify-center">
+                {cart.length}
+              </span>
+            ) : null}
+          </button>
+          <button
+            className="p-2 hover:bg-gray-100 rounded-full relative"
+            onClick={() => navigate('/likes')}
+            aria-label="open likes"
+          >
+            <Heart size={20} />
+            {likes.length > 0 ? (
+              <span className="absolute -top-1 -right-1 text-[10px] h-4 min-w-4 px-1 rounded-full bg-black text-white flex items-center justify-center">
+                {likes.length}
+              </span>
+            ) : null}
+          </button>
+          <button className="p-2 hover:bg-gray-100 rounded-full" aria-label="profile">
+            <User size={20} />
+          </button>
         </div>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

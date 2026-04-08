@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Heart } from 'lucide-react'
+import { useShopStore } from './shopStore'
 
 type DetailState = {
   item?: {
@@ -36,6 +37,7 @@ function detectCurrency(raw?: string) {
 export default function ProductDetailPage() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { addLike, addToCart } = useShopStore()
   const state = (location.state ?? {}) as DetailState
 
   const item = state.item
@@ -105,7 +107,16 @@ export default function ProductDetailPage() {
           <div className="flex-1 p-10 bg-white relative">
             <button
               className="absolute top-6 right-8 text-gray-300 hover:text-gray-500"
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.preventDefault()
+                addLike({
+                  title: item.title,
+                  image: item.image,
+                  priceWeek: item.priceWeek,
+                  priceMonth: item.priceMonth,
+                  oldPriceMonth: item.oldPriceMonth,
+                })
+              }}
               aria-label="favorite"
             >
               <Heart size={22} />
@@ -180,6 +191,19 @@ export default function ProductDetailPage() {
               <div className="grid grid-cols-2 gap-4">
                 <button
                   className="bg-[#EAF9F1] border border-[#1DBF73] text-[#1DBF73] py-4 rounded-xl font-extrabold uppercase tracking-widest text-[12px] hover:bg-[#def7ea] transition-colors"
+                  onClick={() => {
+                    addToCart(
+                      {
+                        title: item.title,
+                        image: item.image,
+                        priceWeek: item.priceWeek,
+                        priceMonth: item.priceMonth,
+                        oldPriceMonth: item.oldPriceMonth,
+                      },
+                      count,
+                    )
+                    navigate('/cart')
+                  }}
                 >
                   В корзину
                 </button>
